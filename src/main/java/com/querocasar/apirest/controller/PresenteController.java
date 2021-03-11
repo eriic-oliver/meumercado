@@ -1,6 +1,7 @@
 package com.querocasar.apirest.controller;
 
 import com.querocasar.apirest.models.PresenteModel;
+import com.querocasar.apirest.models.SendEmail;
 import com.querocasar.apirest.repository.PresenteRepository;
 import com.querocasar.apirest.services.ServicoNotificacaoAssinaturaPresente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,9 @@ public class PresenteController {
 
     @GetMapping(path = "/enviaremail")
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity enviaEmail(@QueryParam("email") String email, @QueryParam("convidado") String convidado, @QueryParam("item") String item){
+    public ResponseEntity enviaEmail(@RequestBody SendEmail sendEmail){
         ServicoNotificacaoAssinaturaPresente notificacaoAssinaturaPresente = new ServicoNotificacaoAssinaturaPresente();
-        notificacaoAssinaturaPresente.enviarNotificacao(email, convidado, item);
+        notificacaoAssinaturaPresente.enviarNotificacao(sendEmail.getEmail(), sendEmail.getConvidado(), sendEmail.getItem());
         return ResponseEntity.ok().build();
     }
 }
