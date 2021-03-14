@@ -20,10 +20,10 @@ public class CasamentoModel implements Serializable{
     @Column(nullable = false, length = 150)
     public String dados_conta;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 100)
     public String latitude;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 100)
     public String longitude;
 
     @Column(nullable = false, length = 150)
