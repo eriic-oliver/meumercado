@@ -20,7 +20,7 @@ public class PresenteModel implements Serializable{
     @Column(nullable = false, length = 10)
     public String preco;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 350)
     public String link;
 
     @Column(nullable = false)
