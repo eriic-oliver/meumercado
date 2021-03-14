@@ -15,24 +15,26 @@ import javax.ws.rs.HttpMethod;
 @Log4j2
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-   /* @Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
-    }*/
-
+                .httpBasic()
+                .and()
+                .csrf().disable();
+    }
+/*
     @Override
     protected void configure(HttpSecurity http)throws Exception{
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/status/").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/presentes/enviaremail/").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/presentes/enviaremail/").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().permitAll()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-    }
+    }*/
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

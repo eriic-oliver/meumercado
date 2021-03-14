@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,6 +28,19 @@ public class PresenteController {
         return presenteRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
+    }
+    @GetMapping(path = "casamentoid/{id}")
+    public ResponseEntity getPresentePorCasamento(@PathVariable("id") Long id){
+        List<PresenteModel> listaPresentes = presenteRepository.findAll();
+        List<PresenteModel> send = new ArrayList<PresenteModel>();
+        for (PresenteModel presente: listaPresentes) {
+            int i = 0;
+            if(presente.casamento_id == id){
+                send.add(i, presente);
+            }
+            i++;
+        }
+        return ResponseEntity.ok().body(send);
     }
 
     @GetMapping(path = "/")
@@ -49,7 +63,7 @@ public class PresenteController {
         return presenteRepository.save(presente);
     }
 
-    @GetMapping(path = "/enviaremail")
+    @PostMapping(path = "/enviaremail")
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity enviaEmail(@RequestBody SendEmail sendEmail){
         ServicoNotificacaoAssinaturaPresente notificacaoAssinaturaPresente = new ServicoNotificacaoAssinaturaPresente();

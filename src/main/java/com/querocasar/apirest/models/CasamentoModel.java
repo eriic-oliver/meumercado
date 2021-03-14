@@ -29,6 +29,9 @@ public class CasamentoModel implements Serializable{
     @Column(nullable = false, length = 150)
     public String email_adm;
 
+    @Column(nullable = false, length = 150)
+    public String senha_adm;
+
     public Long getId() {
         return id;
     }
@@ -83,5 +86,13 @@ public class CasamentoModel implements Serializable{
 
     public void setEmail_adm(String email_adm) {
         this.email_adm = email_adm;
+    }
+
+    public String getSenha_adm() {
+        return senha_adm;
+    }
+
+    public void setSenha_adm(String senha_adm) {
+        this.senha_adm = senha_adm;
     }
 }
