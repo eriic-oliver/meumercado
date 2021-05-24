@@ -30,7 +30,7 @@ public class CasamentoModel implements Serializable{
     public String email_adm;
 
     @Column(nullable = false, length = 150)
-    public String senha_adm;
+        public String senha_adm;
 
     public Long getId() {
         return id;

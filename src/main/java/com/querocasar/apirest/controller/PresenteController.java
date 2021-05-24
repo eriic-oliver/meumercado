@@ -63,6 +63,14 @@ public class PresenteController {
         return presenteRepository.save(presente);
     }
 
+    @PostMapping(path = "/salvarVarios")
+    public ResponseEntity postVariosPresentes(@RequestBody List<PresenteModel> presentes){
+        for(PresenteModel presente:presentes){
+            presenteRepository.save(presente);
+        }
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping(path = "/enviaremail")
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity enviaEmail(@RequestBody SendEmail sendEmail){
