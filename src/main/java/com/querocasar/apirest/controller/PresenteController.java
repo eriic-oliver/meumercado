@@ -29,13 +29,28 @@ public class PresenteController {
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
-    @GetMapping(path = "casamentoid/{id}")
+    @GetMapping(path = "/casamentoid/{id}")
     public ResponseEntity getPresentePorCasamento(@PathVariable("id") Long id){
         List<PresenteModel> listaPresentes = presenteRepository.findAll();
         List<PresenteModel> send = new ArrayList<PresenteModel>();
         for (PresenteModel presente: listaPresentes) {
             int i = 0;
-            if(presente.casamento_id == id){
+            if(presente.casamento_id.equals(id)){
+                send.add(i, presente);
+            }
+            i++;
+        }
+        return ResponseEntity.ok().body(send);
+    }
+
+    @GetMapping(path = "/categoria/{categoria}/{idCasamento}")
+    public ResponseEntity getPresentePorCategoria(@PathVariable("categoria") Long categoria,
+                                                  @PathVariable("idCasamento") Long idCasamento){
+        List<PresenteModel> send = new ArrayList<>();
+        List<PresenteModel> listaPresentes = presenteRepository.findAll();
+        for (PresenteModel presente:listaPresentes) {
+            int i = 0;
+            if(presente.getCategoria().equals(categoria) && presente.getCasamentoID().equals(idCasamento)){
                 send.add(i, presente);
             }
             i++;

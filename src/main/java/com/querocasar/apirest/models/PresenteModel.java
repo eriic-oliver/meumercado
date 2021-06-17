@@ -26,6 +26,12 @@ public class PresenteModel implements Serializable{
     @Column(nullable = false)
     public Long casamento_id;
 
+    @Column(nullable = false)
+    public Long categoria;
+
+    @Column(nullable = false)
+    public Long imagem;
+
     public Long getId() {
         return id;
     }
@@ -72,5 +78,21 @@ public class PresenteModel implements Serializable{
 
     public void setCasamentoID(Long casamento_id) {
         this.casamento_id = casamento_id;
+    }
+
+    public Long getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Long categoria) {
+        this.categoria = categoria;
+    }
+
+    public Long getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(Long imagem) {
+        this.imagem = imagem;
     }
 }

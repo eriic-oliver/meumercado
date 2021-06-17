@@ -2,15 +2,13 @@ package com.querocasar.apirest.services;
 
 import com.querocasar.apirest.models.EmailModel;
 
-public class ServicoNotificacaoAssinaturaPresente {
+public class ServicoNotificacaoCadastroCasamento {
 
-    public void enviarNotificacao(String email, String convidado, String item) {
-        StringBuilder textoEmail = new StringBuilder("Informamos que ");
+    public void enviarNotificacaoCadastro(String email, Long id) {
+        StringBuilder textoEmail = new StringBuilder("Bem-vindo ao Quero Casar!!! \n \n");
         textoEmail
-                .append(convidado)
-                .append(" assinou um item da sua lista de presentes: \n")
-                .append("\n")
-                .append(item)
+                .append(" Seu ID de acesso é: \n")
+                .append(id)
                 .append(" \n")
                 .append("\n")
                 .append("Atenciosamente, \n")
@@ -21,7 +19,7 @@ public class ServicoNotificacaoAssinaturaPresente {
         emailsDestino.append(email);
 
         EmailModel mensagemEmail = new EmailModel();
-        mensagemEmail.setTitulo("Há um novo item assinado em sua lista de presentes");
+        mensagemEmail.setTitulo("Boas vindas!");
         mensagemEmail.setDestino(emailsDestino.toString());
         mensagemEmail.setTexto(textoEmail.toString());
 
