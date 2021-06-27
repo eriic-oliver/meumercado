@@ -30,7 +30,13 @@ public class CasamentoModel implements Serializable{
     public String email_adm;
 
     @Column(nullable = false, length = 150)
-        public String senha_adm;
+    public String senha_adm;
+
+    @Column(nullable = false)
+    public String end_noivo;
+
+    @Column(nullable = false)
+    public String end_noiva;
 
     public Long getId() {
         return id;
@@ -40,27 +46,27 @@ public class CasamentoModel implements Serializable{
         this.id = id;
     }
 
-    public String getPrimNomeNoivo() {
+    public String getPrim_nome_noivo() {
         return prim_nome_noivo;
     }
 
-    public void setPrimNomeNoivo(String prim_nome_noivo) {
+    public void setPrim_nome_noivo(String prim_nome_noivo) {
         this.prim_nome_noivo = prim_nome_noivo;
     }
 
-    public String getPrimNomeNoiva() {
+    public String getPrim_nome_noiva() {
         return prim_nome_noiva;
     }
 
-    public void setPrimNomeNoiva(String prim_nome_noiva) {
+    public void setPrim_nome_noiva(String prim_nome_noiva) {
         this.prim_nome_noiva = prim_nome_noiva;
     }
 
-    public String getDadosConta() {
+    public String getDados_conta() {
         return dados_conta;
     }
 
-    public void setDadosConta(String dados_conta) {
+    public void setDados_conta(String dados_conta) {
         this.dados_conta = dados_conta;
     }
 
@@ -94,5 +100,21 @@ public class CasamentoModel implements Serializable{
 
     public void setSenha_adm(String senha_adm) {
         this.senha_adm = senha_adm;
+    }
+
+    public String getEnd_noivo() {
+        return end_noivo;
+    }
+
+    public void setEnd_noivo(String end_noivo) {
+        this.end_noivo = end_noivo;
+    }
+
+    public String getEnd_noiva() {
+        return end_noiva;
+    }
+
+    public void setEnd_noiva(String end_noiva) {
+        this.end_noiva = end_noiva;
     }
 }
