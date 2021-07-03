@@ -1,5 +1,6 @@
 package com.querocasar.apirest.controller;
 
+import com.querocasar.apirest.models.AdmModel;
 import com.querocasar.apirest.models.CasamentoModel;
 import com.querocasar.apirest.models.SendEmail;
 import com.querocasar.apirest.repository.CasamentoRepository;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -55,4 +57,21 @@ public class CasamentoController {
         notificacao.enviarNotificacaoCadastro(casamento.email_adm, casamento.id);
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping(path = "/loginadm")
+    public ResponseEntity loginAdm(@RequestBody AdmModel adm){
+        List<CasamentoModel> casamentos = casamentoRepository.findAll();
+        CasamentoModel casamentoAlvo = new CasamentoModel();
+        for (CasamentoModel casamento:casamentos) {
+            if(casamento.getEmail_adm().equals(adm.getEmail().trim()) &&
+                    casamento.getSenha_adm().equals(adm.getSenha())){
+                casamentoAlvo = casamento;
+            }
+        }
+        if(casamentoAlvo==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(casamentoAlvo);
+    }
+
 }
