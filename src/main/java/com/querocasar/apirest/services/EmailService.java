@@ -32,6 +32,13 @@ public class EmailService {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
 
+        props.put("mail.smtp.socketFactory.fallback", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.starttls.required", "true");
+        props.put("mail.smtp.ssl.enable", "false");
+        props.put("mail.username", "querocasarservice@gmail.com");
+        props.put("mail.password", "$&nH@d0@pPq3R0c4S@r...");
+
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication()
