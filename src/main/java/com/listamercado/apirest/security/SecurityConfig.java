@@ -1,4 +1,4 @@
-package com.querocasar.apirest.security;
+package com.listamercado.apirest.security;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -42,10 +42,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        log.info("Password encoded {}", passwordEncoder.encode("querocasardia13"));
+        log.info("Password encoded {}", passwordEncoder.encode("apenasumaslistaqualquer1232"));
         auth.inMemoryAuthentication()
-                .withUser("querocasar_admin")
-                .password(passwordEncoder.encode("querocasardia13"))
+                .withUser("listacasameno_admin")
+                .password(passwordEncoder.encode("apenasumaslistaqualquer1232"))
                 .roles("USER", "ADMIN");
     }
 }

@@ -1,4 +1,4 @@
-package com.querocasar.apirest.models;
+package com.listamercado.apirest.models;
 
 public class AdmModel {
     private String email;
